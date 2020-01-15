@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Login Authentication  With Springboot Web Security </title>
+        <link type="text/css" rel="stylesheet"
+	href="css/bootstrap-4.2.1-dist/css/bootstrap.min.css"
+	th:href="@{css/bootstrap-4.2.1-dist/css/bootstrap.min.css}" />
+    </head>
+    <body>
+    <div class ="jumbotron jumbotron-fluid">
+    <h3 style="color:orange;">This is a just Simple Springboot Web Security Implementation!!!</h3>
+     <h5>Default User and Password for*(admin and admin(user  and user)) </h5>
+    </div>
+  <div container card text-center>
+        <div class = "row container-fluid">
+  
+
+        <form  th:action="@{/login}" method="post">
+        	<div  style = "margin-left:70%">
+	            <label style="color:orange;"> User Name as user: <input class = "col-md-12" type="text" name="username" placeholder="user"/> </label>
+	           	<label style="color:orange;"> Password as user: <input class = "col-md-12" type="password" name="password" placeholder = "user"/> </label>
+	           	<div class="form-group form-check">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox"> Remember me
+    </label>
+  </div>
+	            <button class = "btn btn-primary" type="submit" name="signin" >Sign In</button>  
+            </div>
+        </form>
+        <br/>
+       
+          <div  class = "col-md-12"  th:if="${param.error}">
+           <h1 style="color:red;">Invalid username and password.</h1>
+        </div>
+        </div>
+        <div class = "col-md-12" th:if="${param.logout}">
+            <h1 style="color:green;">Successfully logged out !!!.</h1>
+        </div>
+        </div>
+        <footer class="page-footer font-small blue pt-4">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+ 
+ 
+
+ </div>
+ </footer>
+ <div class ="jumbotron jumbotron-fluid"></div>
+    </body>
+</html>

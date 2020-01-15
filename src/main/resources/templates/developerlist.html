@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>All Our Developer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet"
+	href="css/bootstrap-4.2.1-dist/css/bootstrap.min.css"
+	th:href="@{css/bootstrap-4.2.1-dist/css/bootstrap.min.css}" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-ligth-dark" style="background-color: #7d557a;">
+ <a class="navbar-brand"><h4 style="color:orange;">Sprint Log Information</h4></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" sec:authorize="hasAuthority('ADMIN')" href="/addpro"> Add Project</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" sec:authorize="hasAuthority('ADMIN')" href="/add" >Add Sprint Members </a>
+      </li>
+     
+      
+    </ul>
+    <form class="form-inline my-2 my-lg-0" th:action="@{/search}" th:object="${projects}" method="get">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search By First Name  "  name="byFirstname" th:value="${byFirstname}" />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+	
+	<div style="margin: 30px">
+		
+	
+			<h3 th:inline="text"><h4 style="color:orange;">Welcome Sprint Members !!!</h4> 
+				[[${#httpServletRequest.remoteUser}]]</h3>
+	
+		
+
+		<table class="table">
+		<thead class="thead-dark">
+				<tr>
+
+					<th>Position</th>
+					<th>First Name </th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Spring Time </th>					
+					<th>Sprint Description</th>
+					<th>Project</th>
+					<th sec:authorize="hasRole('ADMIN')"></th>
+					<th></th>
+					<th></th>
+					
+					
+					
+				<tr />
+			<thead />
+
+			<tbody>
+				<tr th:each="developer : ${developers}">
+
+					<td th:text="${developer.position}"></td>
+					<td th:text="${developer.firstname}"></td>
+					<td th:text="${developer.lastname}"></td>
+					<td th:text="${developer.email}"></td>
+					<td th:text="${developer.phone}"></td>
+					<td th:text="${developer.sprinttime}"></td>
+					<td th:text="${developer.sprintdsc}"></td>								
+					<td th:text="${developer.project.name}"></td>
+										
+					<td sec:authorize="hasAuthority('ADMIN')"><a
+						th:href="@{/delete/{id}(id=${developer.id})}"
+						class="btn btn-outline-danger btn-sm">Delete</a></td>
+
+					<td><a th:href="@{/edit/{id}(id=${developer.id})}"
+						class="btn btn-outline-warning btn-sm"> Update</a></td>
+
+				</tr>
+			</tbody>
+					</table>
+					<form th:action="@{/logout}" method="post">
+  	
+				<input type="submit" value="Sign Out" name="signout" class="btn btn-outline-danger btn-sm" />
+				
+				
+				<a th:href="@{/developerlist}"
+						class="btn btn-outline-warning btn-sm">Back</a></td>
+										
+
+			</form>	
+				
+			
+										
+			
+	</div>
+	
+	
+
+<footer class="page-footer font-small mdb-color lighten-3 pt-4">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!--Grid row-->
+    <div class="row">
+
+      <!--Grid column-->
+      
+      <div class="col-lg-2 col-md-12 mb-4">
+
+        <!--Image-->
+        <div class="view overlay z-depth-1-half ">
+        
+  
+	
+         <a th:href="@{https://github.com/amberkarki}"> <img src="images/git" class="img-fluid" th:src="@{images/git.png}"</a>
+         <a th:href="@{https://www.linkedin.com/in/amberkarki/}"> <img src="images/lin" class="img-fluid" th:src="@{images/lin.jpg}"</a>
+         
+ 
+           
+          
+        </div>
+        
+    
+
+      </div>
+     
+     
+</footer>
+</body>
+</html>

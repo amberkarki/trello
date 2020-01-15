@@ -1,0 +1,131 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Adding Sprint Logs & Roles </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet"
+	href="css/bootstrap-4.2.1-dist/css/bootstrap.min.css"
+	th:href="@{css/bootstrap-4.2.1-dist/css/bootstrap.min.css}" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	
+	</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-ligth-dark" style="background-color: #7d557a;">
+ <a class="navbar-brand"><h4 style="color:orange;">Sprint Log Information</h4></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" sec:authorize="hasAuthority('ADMIN')" href="/addpro"> Add Project</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" sec:authorize="hasAuthority('ADMIN')" href="/add" >Add Sprint Members </a>
+      </li>
+     
+      
+    </ul>
+    <form class="form-inline my-2 my-lg-0" th:action="@{/search}" th:object="${projects}" method="get">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Project " aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+<div class ="jumbotron jumbotron-fluid"></div>
+	<div style="margin:30px">
+		<h1 style="color:orange;">Add  Spring Logs & Roles </h1>
+		<form th:object="${developer}" th:action="@{save}" action="#" method="post">
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+					<label for="position">Position</label> <input type="text"
+						class="form-control" id="position" placeholder="position"
+						th:field="*{position}" />
+				</div>
+
+				<div class="col-md-4 mb-3">
+					<label for="firstname">First Name</label> <input type="text"
+						class="form-control" placeholder="firstname" id="firstname"
+						th:field="*{firstname}" />
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="lastname">Last Name</label> <input type="text"
+						class="form-control" placeholder="lastName" id="lastname"
+						th:field="*{lastname}" />
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="email">Email</label> <input type="text"
+						class="form-control" placeholder="email" id="email"
+						th:field="*{email}" />
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="phone">Phone</label> <input type="text"
+						class="form-control" placeholder="phone" id="phone"
+						th:field="*{phone}" />
+				</div>
+				
+				<div class="col-md-4 mb-3">
+					<label for="sprinttime">Sprint Time</label> <input type="text"
+						class="form-control" placeholder="spinttime" id="sprinttime"
+						th:field="*{sprinttime}" />
+				</div>
+				
+				<div class="col-md-4 mb-3">
+					<label for="sprintdsc">Sprint Descriptions</label> <input type="text"
+						class="form-control" placeholder="sprintdsc" id="sprintdsc"
+						th:field="*{sprintdsc}" />
+				</div>
+							
+				
+				<div class="col-md-4 mb-3">
+					<label for="project">Project</label> <select id="project"
+						th:field="*{project}" class="form-control">
+						<option th:each="project: ${project}"
+							th:value="${project.projectid}" th:text="${project.name}"></option>
+					</select>
+				</div>
+
+				
+			</div>
+			<input class="btn btn-outline-success btn-sm" type="submit" value="Save"></input>
+
+		</form>
+	</div>
+	
+<footer class="page-footer font-small mdb-color lighten-3 pt-4">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!--Grid row-->
+    <div class="row">
+
+      <!--Grid column-->
+      
+      <div class="col-lg-2 col-md-12 mb-4">
+
+        <!--Image-->
+        <div class="view overlay z-depth-1-half ">
+        
+  
+	
+         <a th:href="@{https://github.com/amberkarki}"> <img src="images/git" class="img-fluid" th:src="@{images/git.png}"</a>
+         <a th:href="@{https://www.linkedin.com/in/amberkarki/}"> <img src="images/lin" class="img-fluid" th:src="@{images/lin.jpg}"</a>
+         
+ 
+           
+          
+        </div>
+        
+        
+
+      </div>
+     
+     
+</footer>
+</body>
+</html>

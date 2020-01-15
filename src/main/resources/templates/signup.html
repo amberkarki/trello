@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Registration </title>
+        <link type="text/css" rel="stylesheet"
+	href="css/bootstrap-4.2.1-dist/css/bootstrap.min.css"
+	th:href="@{css/bootstrap-4.2.1-dist/css/bootstrap.min.css}" />
+    </head>
+    <body>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class = "container card text-center">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <form th:object="${registration}" th:action="@{/saveuser}" action ="#" method="post">
+  <div class="form-group">
+    <label for="username">User Name</label>
+    <input type="text" class="form-control" th:fild="*{username}" id="userName" />
+      </div>
+                  
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" th:field="*{password}" id="password" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="repassword">Retype-Password</label>
+    <input type="password" class="form-control" th:field="*{repassword}" id="repassword" placeholder="Re-Password">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" th:field="*{email}" id="email" placeholder="Email" />
+      </div>
+      
+  
+  <button type="submit" class="btn btn-primary">Submit</button> <a th:href="@{/login}" class="btn btn-primary">Sing In</a> 
+</form>
+</div>
+    
+    </body>
+</html>
