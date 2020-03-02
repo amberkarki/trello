@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import com.trello.trello.domai.Developer;
 import com.trello.trello.domai.DeveloperRepository;
@@ -13,6 +14,8 @@ import com.trello.trello.domai.User;
 import com.trello.trello.domai.UserRepository;
 
 @SpringBootApplication
+@ComponentScan(basePackages={"com.trello.trello"})
+
 public class TrelloApplication {
 
 	public static void main(String[] args) {
